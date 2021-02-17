@@ -11,26 +11,27 @@
     <div>
          <!-- A title -->
         <h1>Carolina Panthers Trivia Quiz</h1>
-        <p>
-            Test your Carolina Panther's knowledge by answering the following
-            trivia questions within the time limit.    
-        </p>
-        <p>
-            Keep in mind that any incorrect answer wil penalize your score/time by 10 seconds!
-        </p>
+        <div id="instructions-container">
+            <p>
+                Test your Carolina Panther's knowledge by answering the following
+                trivia questions within the time limit.    
+            </p>
+            <p>
+                Keep in mind that any incorrect answer wil penalize your score/time by 10 seconds!
+            </p>
+        </div>
     </div>
     <!-- A button to start quiz -->
     <button id="start">START</button>
     <!-- Timer Countdown -->
-    <div id="timer"></div>
+    <div id="timer">Time Left: </div>
     <!-- Container for questions -->
     <div id="questionBox">
-        <div id="timer">Time left: </div>
         <div id="questions"><p>Questions Placeholder</p></div>
-            <button id="a" onclick="checkAnswer('a')">A</button>
-            <button id="b" onclick="checkAnswer('b')">B</button>
-            <button id="c" onclick="checkAnswer('c')">C</button>
-            <button id="d" onclick="checkAnswer('d')">D</button>
+            <button id="1" onclick="checkAnswer('a')">A</button>
+            <button id="2" onclick="checkAnswer('b')">B</button>
+            <button id="3" onclick="checkAnswer('c')">C</button>
+            <button id="4" onclick="checkAnswer('d')">D</button>
         <div id="result"></div>
     </div>
     <!-- Container for High Score -->
