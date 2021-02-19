@@ -9,13 +9,27 @@ body {
     font-size: 20px;
 }
 
-nav {
-    background-color: #0085CA;
+div {display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 20px;
+}
+
+nav { 
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+a {
+color: #0085CA;
+text-decoration: none;
+
 }
 h1 {
-    color: #101820;
-    font-size: 30px;
+    color: #0085CA;
+    font-size: 40px;
 }
 #instructions-container {
     display: flex;

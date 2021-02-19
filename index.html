@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,32 +8,40 @@
     <title>Carolina Panthers Quiz</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <nav>
-         <!-- A title -->
-        <h1>Carolina Panthers Trivia Quiz</h1>
+        <a href="highscores.html">HIGH SCORES</a>
+        <!-- Timer Countdown -->
+        <div id="timer">Time Left: 60</div>
     </nav>
     <div id="instructions-container">
+        <!-- A title -->
+        <h1>Carolina Panthers Trivia Quiz</h1>
         <p>
             Test your Carolina Panther's knowledge by answering the following
-            trivia questions within the time limit.    
+            trivia questions within the time limit.
         </p>
         <p>
             Keep in mind that any incorrect answer will penalize your score/time by 10 seconds!
         </p>
     </div>
     <!-- A button to start quiz -->
-    <button id="start">START</button>
-    <!-- Timer Countdown -->
-    <div id="timer"></div>
+    <div>
+        <button id="start">START</button>
+
+    </div>
     <!-- Container for questions -->
     <div id="questionBox">
         <div id="questions"></div>
+        <div id="answers"></div>
         <div id="result"></div>
     </div>
     <!-- Container for High Score -->
     <div id="gameEnd"></div>
     <div id="finalScore"></div>
+    <div id="initials"></div>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
