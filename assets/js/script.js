@@ -5,7 +5,12 @@ var instructions = document.querySelector("#instructions-container");
 var currentQuestion = 0;
 var questions = document.querySelector("#questions");
 var results = document.querySelector("#result");
-
+var gameOver = document.querySelector('#gameEnd');
+var timeEl = document.querySelector("#timer");
+var finalScoreEl = document.querySelector("#finalScore");
+var secondsLeft = 60;
+var timerInterval;
+var score = 0
 
 // Variables for Quiz Questions
 
@@ -17,69 +22,68 @@ var quizQuestions = [
     { Question: "Which RB/QB combo pioneered the now widely used 'wildcat' offense?", answers: ["Deangelo Williams/Brett Basanez", "Jonathan Stewart/Cam Newton", "Nick Goings/Jake Delhomme", "Derrick Moore/Kerry Collins"], correct: "Deangelo Williams/Brett Basanez" },
 ]
 
-console.table(quizQuestions);
-
-
-
-
-//  for each answer create a button
-
-// for (var i = 0; i < quizQuestions[i].Question[i].answers[i].length; i++) {
-//     var answerEl = document.createElement ('button');
-//     answerEl.textContent = quizQuestions[i].answers[i];
-//     questionsContainer.append(answerEl);
-// }
-
-// Timer
-// var timeEl = document.querySelector("#timer");
-// var secondsLeft = 60;
-
-// function timerSet() {
-// // Sets interval
-// var timerInterval = setInterval(function() {
-//     secondsLeft--;
-//     timeEl.textContent = "Time Left: " + secondsLeft;
-
-//     if(secondsLeft === 0) {
-//         // Stop game
-//         // alert game over
-//         // bring up end game
-//     }, 1000;
-// }
-
-// )
-// }
-
-
-function checkAnswer(event) {
-    console.log(event.target.textContent);
-    if (event.target.textContent !== quizQuestions[currentQuestion].correct){
-        alert("wrong");
+// console.table(quizQuestions);
+    
+    // Checks answer submitted against the correct answer in array
+    function checkAnswer(event) {
+        console.log(event.target.textContent);
+        if (event.target.textContent !== quizQuestions[currentQuestion].correct){
+            alert("wrong");
+            secondsLeft = secondsLeft - 10;
+        }
+        currentQuestion++;
+        if (currentQuestion !== quizQuestions.length) {
+            showQuestion();
+        } else {
+            showScore();
+        }
     }
-    currentQuestion++;
-    if (currentQuestion !== quizQuestions.length) {
+    
+    // shows the Question from array in the div #questions & creates buttons for each answer
+    function showQuestion() {
+        questions.textContent = quizQuestions[currentQuestion].Question;
+        results.innerHTML = "";
+        for (let i = 0; i < quizQuestions[currentQuestion].answers.length; i++) {
+            const element = quizQuestions[currentQuestion].answers[i];
+            var newBtn = document.createElement('button');
+            newBtn.textContent = element;
+            console.log(newBtn, results);
+            newBtn.addEventListener("click", checkAnswer);
+            results.appendChild(newBtn);
+        }
+    }
+    
+
+
+
+    
+//  Changes the time Left to Final Score
+    function showScore() {
+            questions.style.display = "none";
+            results.style.display = "none";
+            gameEnd.style.display = "block";
+            timer.textContent = "Final Score: " + secondsLeft;
+            clearInterval(timerInterval);
+    }
+    
+// Timer Function
+    function startTimer() {timerInterval = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = "Time left: " + secondsLeft;
+    
+        if(secondsLeft === 0) {
+          clearInterval(timerInterval);
+          showScore();
+        }
+      }, 1000);
+    }
+
+    // start quiz with event listener function
+    startBtn.addEventListener("click", function () {
+        startBtn.style.display= "none";
+        instructions.style.display= "none";
+
         showQuestion();
-    } else {
-        alert("Game Over");
-    }
-}
-
-function showQuestion() {
-    questions.textContent = quizQuestions[currentQuestion].Question;
-    results.innerHTML = "";
-    for (let i = 0; i < quizQuestions[currentQuestion].answers.length; i++) {
-        const element = quizQuestions[currentQuestion].answers[i];
-        var newBtn = document.createElement('button');
-        newBtn.textContent = element;
-        console.log(newBtn, results);
-        newBtn.addEventListener("click", checkAnswer);
-        results.appendChild(newBtn);
-    }
-}
-
-// start quiz with event listener function
-startBtn.addEventListener("click", function () {
-    showQuestion();
-    console.log("Start Quiz");
-})
+        startTimer();
+    })
 
