@@ -27,31 +27,3 @@ function getScore() {
 getScore();
 
 
-// function highScores() {
-//   // clear current scores on page
-//     scoresList.innerHTML = "";
-
-//     // sort scores in order from highest to lowest
-//     scores.sort(compareScores);
-
-//     // render scores on page in LIs
-//     for (let i = 0; i < storedScores.length; i++) {
-//         const li = document.createElement("li");
-//         li.textContent = `${scores[i].initials} - ${scores[i].score}`;
-//         scoresList.appendChild(li);
-//     }
-
-// }
-
-// // updates localStorage with content of scores array
-// function storeScore() {
-//     localStorage.setItem("storedScore", JSON.stringify(scores));
-// }
-
-// // checks for scores in localStorage and loads them into scores array
-// function loadScores() {
-//     const displayScores = JSON.parse(localStorage.getItem("storedScore"));
-//     if (displayScores) {
-//         storedScore = displayScores;
-//     }
-// }
