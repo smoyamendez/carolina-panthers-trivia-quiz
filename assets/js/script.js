@@ -73,6 +73,8 @@ var quizQuestions = [
             newBtn.style.margin = "20px";
         }
     }
+
+    var storedScore = [];
         
 //  Changes the time Left to Final Score
     function endQuiz() {
@@ -98,7 +100,16 @@ var quizQuestions = [
         initialsEl.appendChild(nameText);
         initialsEl.appendChild(initialsInput);
         initialsEl.appendChild(submitInitials);
-        submitInitials.onclick(submitIntitials.hef);
+        //submitInitials.onclick();
+        submitInitials.addEventListener("click", function(){
+            var playerName = initialsInput.value;
+            var newPlayer = {"name": playerName, "score": secondsLeft};
+           storedScore.push(newPlayer);
+
+           localStorage.setItem("highscore", JSON.stringify(storedScore));
+        
+
+        })
     }
     
     // Go to high score page
@@ -129,6 +140,4 @@ var quizQuestions = [
 
 
     // start quiz with event listener function
-    startBtn.addEventListener("click", startQuiz) 
-
-
+    startBtn.addEventListener("click", startQuiz);

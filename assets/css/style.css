@@ -44,4 +44,12 @@ button {
     color: #101820;
     font-size: 20px;
     padding: 8px;
+    margin: 20px;
 }
+
+/* #highscoreTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
